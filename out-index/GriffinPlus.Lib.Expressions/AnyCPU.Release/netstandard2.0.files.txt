@@ -1,0 +1,4 @@
+﻿.\GriffinPlus.Lib.Expressions.deps.json
+.\GriffinPlus.Lib.Expressions.dll
+.\GriffinPlus.Lib.Expressions.pdb
+.\GriffinPlus.Lib.Expressions.xml

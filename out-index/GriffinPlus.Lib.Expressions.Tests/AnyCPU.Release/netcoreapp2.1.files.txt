@@ -1,0 +1,14 @@
+﻿.\GriffinPlus.Lib.Expressions.dll
+.\GriffinPlus.Lib.Expressions.pdb
+.\GriffinPlus.Lib.Expressions.Tests.deps.json
+.\GriffinPlus.Lib.Expressions.Tests.dll
+.\GriffinPlus.Lib.Expressions.Tests.pdb
+.\GriffinPlus.Lib.Expressions.Tests.runtimeconfig.dev.json
+.\GriffinPlus.Lib.Expressions.Tests.runtimeconfig.json
+.\GriffinPlus.Lib.Expressions.xml
+.\testhost.dll
+.\testhost.exe
+.\xunit.runner.reporters.netcoreapp10.dll
+.\xunit.runner.utility.netcoreapp10.dll
+.\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+.\Test Data\ExpressionHashCodeTest.tsv

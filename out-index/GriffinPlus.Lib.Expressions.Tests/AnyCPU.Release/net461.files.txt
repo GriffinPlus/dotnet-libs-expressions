@@ -1,0 +1,14 @@
+﻿.\GriffinPlus.Lib.Expressions.dll
+.\GriffinPlus.Lib.Expressions.pdb
+.\GriffinPlus.Lib.Expressions.Tests.dll
+.\GriffinPlus.Lib.Expressions.Tests.pdb
+.\GriffinPlus.Lib.Expressions.xml
+.\Microsoft.VisualStudio.CodeCoverage.Shim.dll
+.\xunit.abstractions.dll
+.\xunit.assert.dll
+.\xunit.core.dll
+.\xunit.execution.desktop.dll
+.\xunit.runner.reporters.net452.dll
+.\xunit.runner.utility.net452.dll
+.\xunit.runner.visualstudio.testadapter.dll
+.\Test Data\ExpressionHashCodeTest.tsv
