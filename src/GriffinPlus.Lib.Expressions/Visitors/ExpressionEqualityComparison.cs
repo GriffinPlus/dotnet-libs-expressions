@@ -13,22 +13,22 @@ using System.Threading;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// An expression visitor that determines whether two expressions are equal.
 	/// </summary>
-	internal sealed partial class ExpressionEqualityComparison : ExpressionVisitor
+	sealed partial class ExpressionEqualityComparison : ExpressionVisitor
 	{
-		private static readonly ThreadLocal<ExpressionEqualityComparison> sInstance = new ThreadLocal<ExpressionEqualityComparison>(() => new ExpressionEqualityComparison());
-		private Queue<object> mRemainingExpectedNodes = new Queue<object>();
-		private Expression mExpectedExpression;
-		private bool mAreEqual;
+		private static readonly ThreadLocal<ExpressionEqualityComparison> sInstance               = new ThreadLocal<ExpressionEqualityComparison>(() => new ExpressionEqualityComparison());
+		private                 Queue<object>                             mRemainingExpectedNodes = new Queue<object>();
+		private                 Expression                                mExpectedExpression;
+		private                 bool                                      mAreEqual;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ExpressionEqualityComparison"/> class.
 		/// </summary>
 		private ExpressionEqualityComparison()
 		{
-
 		}
 
 		/// <summary>
@@ -46,13 +46,15 @@ namespace GriffinPlus.Lib.Expressions
 			instance.mRemainingExpectedNodes.Clear();
 			instance.mRemainingExpectedNodes = VisitedExpressionEnumeration.GetVisitedExpressions(expression2, sInstance.Value.mRemainingExpectedNodes);
 			instance.Visit(expression1);
-			if (instance.mRemainingExpectedNodes.Count > 0) {
+			if (instance.mRemainingExpectedNodes.Count > 0)
+			{
 				instance.mAreEqual = false; // the second expression is longer than the first one
 			}
+
 			return instance.mAreEqual;
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		public override Expression Visit(Expression expression)
 		{
 			if (expression == null || !mAreEqual) return expression;
@@ -63,7 +65,8 @@ namespace GriffinPlus.Lib.Expressions
 			if (mExpectedExpression != null)
 			{
 				// abort, if the the node type of the expressions are not the same
-				if (!CheckAreOfSameType(mExpectedExpression, expression)) {
+				if (!CheckAreOfSameType(mExpectedExpression, expression))
+				{
 					return expression;
 				}
 
@@ -78,18 +81,18 @@ namespace GriffinPlus.Lib.Expressions
 			return expression;
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitBinary(BinaryExpression node)
 		{
 			Debug.Assert(node != null);
-			var expected = (BinaryExpression) mExpectedExpression;
+			var expected = (BinaryExpression)mExpectedExpression;
 			if (!CheckEqual(node.Method, expected.Method)) return node;
 			if (!CheckEqual(node.IsLifted, expected.IsLifted)) return node;
 			if (!CheckEqual(node.IsLiftedToNull, expected.IsLiftedToNull)) return node;
 			return base.VisitBinary(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override CatchBlock VisitCatchBlock(CatchBlock node)
 		{
 			Debug.Assert(node != null);
@@ -100,7 +103,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitCatchBlock(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitConstant(ConstantExpression node)
 		{
 			Debug.Assert(node != null);
@@ -109,7 +112,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitConstant(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitDebugInfo(DebugInfoExpression node)
 		{
 			Debug.Assert(node != null);
@@ -123,7 +126,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitDebugInfo(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitDynamic(DynamicExpression node)
 		{
 			Debug.Assert(node != null);
@@ -133,7 +136,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitDynamic(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override ElementInit VisitElementInit(ElementInit node)
 		{
 			Debug.Assert(node != null);
@@ -144,7 +147,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitElementInit(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitGoto(GotoExpression node)
 		{
 			Debug.Assert(node != null);
@@ -154,7 +157,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitGoto(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitIndex(IndexExpression node)
 		{
 			Debug.Assert(node != null);
@@ -163,7 +166,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitIndex(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitLabel(LabelExpression node)
 		{
 			Debug.Assert(node != null);
@@ -172,7 +175,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitLabel(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitMember(MemberExpression node)
 		{
 			Debug.Assert(node != null);
@@ -181,7 +184,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitMember(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override MemberAssignment VisitMemberAssignment(MemberAssignment node)
 		{
 			Debug.Assert(node != null);
@@ -193,7 +196,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitMemberAssignment(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override MemberBinding VisitMemberBinding(MemberBinding node)
 		{
 			Debug.Assert(node != null);
@@ -205,7 +208,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitMemberBinding(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override MemberListBinding VisitMemberListBinding(MemberListBinding node)
 		{
 			Debug.Assert(node != null);
@@ -217,7 +220,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitMemberListBinding(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override MemberMemberBinding VisitMemberMemberBinding(MemberMemberBinding node)
 		{
 			Debug.Assert(node != null);
@@ -229,7 +232,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitMemberMemberBinding(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override LabelTarget VisitLabelTarget(LabelTarget node)
 		{
 			if (node != null)
@@ -245,6 +248,7 @@ namespace GriffinPlus.Lib.Expressions
 					mAreEqual = false;
 					return null;
 				}
+
 				object obj = mRemainingExpectedNodes.Peek();
 				if (obj != null)
 				{
@@ -257,7 +261,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitLabelTarget(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitLambda<T>(Expression<T> node)
 		{
 			Debug.Assert(node != null);
@@ -268,7 +272,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitLambda(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitMethodCall(MethodCallExpression node)
 		{
 			Debug.Assert(node != null);
@@ -277,7 +281,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitMethodCall(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitNew(NewExpression node)
 		{
 			Debug.Assert(node != null);
@@ -287,7 +291,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitNew(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitParameter(ParameterExpression node)
 		{
 			Debug.Assert(node != null);
@@ -297,7 +301,7 @@ namespace GriffinPlus.Lib.Expressions
 			return node;
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitSwitch(SwitchExpression node)
 		{
 			Debug.Assert(node != null);
@@ -306,7 +310,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitSwitch(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitTypeBinary(TypeBinaryExpression node)
 		{
 			Debug.Assert(node != null);
@@ -315,7 +319,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitTypeBinary(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitUnary(UnaryExpression node)
 		{
 			Debug.Assert(node != null);
@@ -333,7 +337,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// The next expected expression;
 		/// null, if the first element in the queue is not of type <typeparamref name="T"/> or the queue is empty.
 		/// </returns>
-		private T PeekExpectedExpressionNode<T>() where T: class
+		private T PeekExpectedExpressionNode<T>() where T : class
 		{
 			if (mRemainingExpectedNodes.Count == 0) return null;
 			return mRemainingExpectedNodes.Peek() as T;
@@ -343,9 +347,9 @@ namespace GriffinPlus.Lib.Expressions
 		/// Removes the next expected expression node from the queue.
 		/// </summary>
 		/// <returns>The next expected node; null, if the queue is empty.</returns>
-		private object PopExpectedExpressionNode()
+		private void PopExpectedExpressionNode()
 		{
-			return mRemainingExpectedNodes.Dequeue();
+			mRemainingExpectedNodes.Dequeue();
 		}
 
 		/// <summary>
@@ -410,13 +414,14 @@ namespace GriffinPlus.Lib.Expressions
 			if (obj1 == null && obj2 == null) return true;
 			if ((obj1 != null) ^ (obj2 != null)) return false;
 
-			if (!obj1.SequenceEqual(obj2)) {
+			if (!obj1.SequenceEqual(obj2))
+			{
 				mAreEqual = false;
 				return false;
 			}
 
 			return true;
 		}
-
 	}
+
 }

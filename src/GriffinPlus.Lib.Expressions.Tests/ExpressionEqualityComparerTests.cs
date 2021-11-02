@@ -15,6 +15,7 @@ using System.IO;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
+
 using Xunit;
 
 // ReSharper disable RedundantExplicitParamsArrayCreation
@@ -24,6 +25,7 @@ using Xunit;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// Unit tests for the <see cref="ExpressionEqualityComparer"/> class.
 	/// </summary>
@@ -54,20 +56,20 @@ namespace GriffinPlus.Lib.Expressions
 			foreach (var expression in TestExpressions)
 			{
 				int hashCode = comparer.GetHashCode(expression);
-				records.Add(new TestRecord()
-				{
-					Expression = expression.ToString(),
-					HashCode = hashCode
-				});
+				records.Add(
+					new TestRecord
+					{
+						Expression = expression.ToString(),
+						HashCode = hashCode
+					});
 			}
 
-			#if WRITE_GENERATED_HASH_CODES_TO_FILE
-
+#if WRITE_GENERATED_HASH_CODES_TO_FILE
 			// write expected data set
 			string path = Path.GetFullPath("ExpressionHashCodeTest_Generated.tsv");
 			Helpers.WriteTestData(path, records);
 
-			#endif // WRITE_GENERATED_HASH_CODES_TO_FILE
+#endif // WRITE_GENERATED_HASH_CODES_TO_FILE
 
 			// check whether the generated hash codes are different
 			// (different expressions may have the same hash code, but it should not happen too often...)
@@ -75,7 +77,8 @@ namespace GriffinPlus.Lib.Expressions
 			int duplicateHashCodeCount = 0;
 			foreach (var record in records)
 			{
-				if (set.TryGetValue(record.HashCode, out var other)) {
+				if (set.TryGetValue(record.HashCode, out var other))
+				{
 					Console.WriteLine("Detected duplicate hash code ({0}) for expression ({1}) and expression ({2})", record.HashCode, other, record.Expression);
 					duplicateHashCodeCount++;
 					continue;
@@ -122,7 +125,8 @@ namespace GriffinPlus.Lib.Expressions
 
 				for (int i = 0; i < expressions.Length; i++)
 				{
-					yield return new object[] {
+					yield return new object[]
+					{
 						expressions[i],
 						hashCodes[i]
 					};
@@ -146,7 +150,7 @@ namespace GriffinPlus.Lib.Expressions
 				{
 					bool isEqual = comparer.Equals(expressions[i], expressions[j]);
 					if (i == j) Assert.True(isEqual, $"Expression {i} {expressions[i]} compared with itself should be equal, but Equals() returns false.");
-					else        Assert.False(isEqual, $"Expression {i} {expressions[i]} compared with expression {j} ({expressions[j]}) should not be equal, but Equals() returns true.");
+					else Assert.False(isEqual, $"Expression {i} {expressions[i]} compared with expression {j} ({expressions[j]}) should not be equal, but Equals() returns true.");
 				}
 			}
 		}
@@ -186,7 +190,7 @@ namespace GriffinPlus.Lib.Expressions
 					nameof(string.Length));
 
 				// NodeType: Property
-				yield return Expression.Property(            // list[index]
+				yield return Expression.Property( // list[index]
 					Expression.Variable(typeof(List<int>), "list"),
 					typeof(List<int>).GetProperty("Item"),
 					Expression.Variable(typeof(int), "index"));
@@ -224,24 +228,23 @@ namespace GriffinPlus.Lib.Expressions
 				yield return Expression.Default(typeof(int));
 
 				// NodeType: New
-				yield return Expression.New(typeof(Point));  // new Point()
-				yield return Expression.New(                 // new Point(x, y)
+				yield return Expression.New(typeof(Point)); // new Point()
+				yield return Expression.New(                // new Point(x, y)
 					typeof(Point).GetConstructor(new[] { typeof(int), typeof(int) }),
-					new Expression[] {
+					new Expression[]
+					{
 						Expression.Parameter(typeof(int), "x"),
 						Expression.Parameter(typeof(int), "y")
-					}
-				);
+					});
 
 				// NodeType: MemberInit
-				yield return Expression.MemberInit(          // new Point() { X = 1, Y = 2 }
+				yield return Expression.MemberInit( // new Point() { X = 1, Y = 2 }
 					Expression.New(typeof(Point)),
 					new MemberBinding[]
 					{
 						Expression.Bind(typeof(Point).GetProperty("X"), Expression.Constant(1)),
 						Expression.Bind(typeof(Point).GetProperty("Y"), Expression.Constant(2))
-					}
-				);
+					});
 
 				#endregion
 
@@ -347,40 +350,31 @@ namespace GriffinPlus.Lib.Expressions
 					Expression.Variable(typeof(double), "y"));
 
 				// NodeType: Increment
-				yield return Expression.Increment(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.Increment(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: PreIncrementAssign
-				yield return Expression.PreIncrementAssign(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.PreIncrementAssign(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: PostIncrementAssign
-				yield return Expression.PostIncrementAssign(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.PostIncrementAssign(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: Decrement
-				yield return Expression.Decrement(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.Decrement(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: PreDecrementAssign
-				yield return Expression.PreDecrementAssign(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.PreDecrementAssign(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: PostDecrementAssign
-				yield return Expression.PostDecrementAssign(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.PostDecrementAssign(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: Negate
-				yield return Expression.Negate(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.Negate(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: NegateChecked
-				yield return Expression.NegateChecked(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.NegateChecked(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: UnaryPlus
-				yield return Expression.UnaryPlus(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.UnaryPlus(Expression.Variable(typeof(int), "x"));
 
 				#endregion
 
@@ -417,12 +411,10 @@ namespace GriffinPlus.Lib.Expressions
 					Expression.Variable(typeof(int), "y"));
 
 				// NodeType: Not
-				yield return Expression.Not(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.Not(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: OnesComplement
-				yield return Expression.OnesComplement(
-					Expression.Variable(typeof(int), "x"));
+				yield return Expression.OnesComplement(Expression.Variable(typeof(int), "x"));
 
 				// NodeType: LeftShift
 				yield return Expression.LeftShift(
@@ -489,40 +481,40 @@ namespace GriffinPlus.Lib.Expressions
 					Expression.Variable(typeof(bool), "y"));
 
 				// NodeType: Not
-				yield return Expression.Not(
-					Expression.Variable(typeof(bool), "x"));
+				yield return Expression.Not(Expression.Variable(typeof(bool), "x"));
 
 				#endregion
 
 				#region Array Operations
 
 				// NodeType: NewArrayBounds
-				yield return Expression.NewArrayBounds(       // new int[x]
+				yield return Expression.NewArrayBounds( // new int[x]
 					typeof(int),
 					Expression.Variable(typeof(int), "x"));
 
 				// NodeType: NewArrayInit
-				yield return Expression.NewArrayInit(         // new int[] { 1, 2, 3 }
+				yield return Expression.NewArrayInit( // new int[] { 1, 2, 3 }
 					typeof(int),
-					new[] {
+					new Expression[]
+					{
 						Expression.Constant(1),
 						Expression.Constant(2),
 						Expression.Constant(3)
 					});
 
 				// NodeType: ArrayIndex
-				yield return Expression.ArrayIndex(             // array[index]
+				yield return Expression.ArrayIndex( // array[index]
 					Expression.Variable(typeof(int[]), "array"),
 					Expression.Variable(typeof(int), "index"));
 
 				// NodeType: ArrayAccess
-				yield return Expression.ArrayAccess(             // array[index1,index2]
+				yield return Expression.ArrayAccess( // array[index1,index2]
 					Expression.Variable(typeof(int[,]), "array"),
 					Expression.Variable(typeof(int), "index1"),
 					Expression.Variable(typeof(int), "index2"));
 
 				// NodeType: ArrayLength
-				yield return Expression.ArrayLength(            // array.Length
+				yield return Expression.ArrayLength( // array.Length
 					Expression.Variable(typeof(int[]), "array"));
 
 				#endregion
@@ -583,7 +575,7 @@ namespace GriffinPlus.Lib.Expressions
 				#region Conditional, If-Then, If-Then-Else, Switch
 
 				// NodeType: Condition
-				yield return Expression.Condition(        // condition ? x : y
+				yield return Expression.Condition( // condition ? x : y
 					Expression.Variable(typeof(bool), "condition"),
 					Expression.Variable(typeof(int), "x"),
 					Expression.Variable(typeof(int), "y"));
@@ -632,7 +624,7 @@ namespace GriffinPlus.Lib.Expressions
 					yield return Expression.Switch(
 						switchValueExpression,
 						Expression.Assign(resultExpression, Expression.Constant(-1)),
-						new SwitchCase[]
+						new[]
 						{
 							Expression.SwitchCase(
 								Expression.Assign(resultExpression, Expression.Constant(100)),
@@ -648,12 +640,12 @@ namespace GriffinPlus.Lib.Expressions
 				#region Conversion
 
 				// NodeType: Convert
-				yield return Expression.Convert(               // (int)x
+				yield return Expression.Convert( // (int)x
 					Expression.Variable(typeof(double), "x"),
 					typeof(int));
 
 				// NodeType: ConvertChecked
-				yield return Expression.ConvertChecked(        // checked((int)x)
+				yield return Expression.ConvertChecked( // checked((int)x)
 					Expression.Variable(typeof(double), "x"),
 					typeof(int));
 
@@ -667,12 +659,10 @@ namespace GriffinPlus.Lib.Expressions
 				#region Comparison
 
 				// NodeType: IsTrue
-				yield return Expression.IsTrue(
-					Expression.Variable(typeof(bool), "x"));
+				yield return Expression.IsTrue(Expression.Variable(typeof(bool), "x"));
 
 				// NodeType: IsFalse
-				yield return Expression.IsFalse(
-					Expression.Variable(typeof(bool), "x"));
+				yield return Expression.IsFalse(Expression.Variable(typeof(bool), "x"));
 
 				// NodeType: NotEqual
 				yield return Expression.NotEqual(
@@ -729,7 +719,7 @@ namespace GriffinPlus.Lib.Expressions
 				#region Call
 
 				// NodeType: Call
-				yield return Expression.Call(     // string.Concat(x, y)
+				yield return Expression.Call( // string.Concat(x, y)
 					typeof(string).GetMethod(
 						"Concat",
 						new[] { typeof(string), typeof(string) }),
@@ -737,7 +727,7 @@ namespace GriffinPlus.Lib.Expressions
 					Expression.Variable(typeof(string), "y"));
 
 				// NodeType: Call
-				yield return Expression.Call(     // x.ToString()
+				yield return Expression.Call( // x.ToString()
 					Expression.Variable(typeof(object), "x"),
 					typeof(object).GetMethod("ToString"));
 
@@ -748,7 +738,7 @@ namespace GriffinPlus.Lib.Expressions
 				{
 					// NodeType: Lambda
 					ParameterExpression lambdaParameter = Expression.Parameter(typeof(int), "x");
-					yield return Expression.Lambda(    // x => x
+					yield return Expression.Lambda( // x => x
 						lambdaParameter,
 						lambdaParameter);
 				}
@@ -756,7 +746,7 @@ namespace GriffinPlus.Lib.Expressions
 				{
 					// NodeType: Lambda
 					ParameterExpression lambdaParameter = Expression.Parameter(typeof(int), "x");
-					yield return Expression.Lambda(    // x => x + x
+					yield return Expression.Lambda( // x => x + x
 						Expression.Add(lambdaParameter, lambdaParameter),
 						lambdaParameter);
 				}
@@ -766,19 +756,18 @@ namespace GriffinPlus.Lib.Expressions
 				#region Block
 
 				// block with no variables and return value
-				yield return Expression.Block(           // { x++; y++ }
+				yield return Expression.Block( // { x++; y++ }
 					Expression.PostIncrementAssign(Expression.Variable(typeof(int), "x")),
-					Expression.PostIncrementAssign(Expression.Variable(typeof(int), "y"))
-				);
+					Expression.PostIncrementAssign(Expression.Variable(typeof(int), "y")));
 
 				{
 					// block (with variables and return value)
 					var arg = Expression.Parameter(typeof(int), "arg");
-					yield return Expression.Block(            // { var arg; x++; return arg++}
-						typeof(int),                          // result type
-						new ParameterExpression[] { arg },    // arguments
+					yield return Expression.Block( // { var arg; x++; return arg++}
+						typeof(int),               // result type
+						new[] { arg },             // arguments
 						Expression.PostIncrementAssign(Expression.Variable(typeof(int), "x")),
-						Expression.PostIncrementAssign(arg)   // returned from the block
+						Expression.PostIncrementAssign(arg) // returned from the block
 					);
 				}
 
@@ -792,8 +781,7 @@ namespace GriffinPlus.Lib.Expressions
 						Expression.Call(Expression.Constant("Top"), typeof(string).GetMethod("ToString", Type.EmptyTypes)),
 						Expression.Goto(returnTarget),
 						Expression.Call(Expression.Constant("Flop"), typeof(string).GetMethod("ToString", Type.EmptyTypes)), // not executed
-						Expression.Label(returnTarget)
-					);
+						Expression.Label(returnTarget));
 				}
 
 				{
@@ -811,7 +799,7 @@ namespace GriffinPlus.Lib.Expressions
 
 				{
 					// example from the documentation of the 'Invoke' expression
-					Expression<Func<int, int, bool>> largeSumTest = (num1, num2) => (num1 + num2) > 1000;
+					Expression<Func<int, int, bool>> largeSumTest = (num1, num2) => num1 + num2 > 1000;
 					yield return Expression.Invoke(
 						largeSumTest,
 						Expression.Constant(539),
@@ -850,11 +838,9 @@ namespace GriffinPlus.Lib.Expressions
 								typeof(Console).GetMethod("WriteLine", new[] { typeof(string) }),
 								Expression.Constant("Loop")),
 							continueExpr,
-							Expression.PreDecrementAssign(count)
-						),
+							Expression.PreDecrementAssign(count)),
 						breakLabel,
-						continueLabel
-					);
+						continueLabel);
 				}
 
 				{
@@ -874,15 +860,12 @@ namespace GriffinPlus.Lib.Expressions
 					yield return Expression.Block(
 						new[] { result },
 						Expression.Assign(result, Expression.Constant(1)),
-							Expression.Loop(
-								Expression.IfThenElse(
-									Expression.GreaterThan(value, Expression.Constant(1)),
-									Expression.MultiplyAssign(result, Expression.PostDecrementAssign(value)),
-									Expression.Break(label, result)
-								),
-							label
-						)
-					);
+						Expression.Loop(
+							Expression.IfThenElse(
+								Expression.GreaterThan(value, Expression.Constant(1)),
+								Expression.MultiplyAssign(result, Expression.PostDecrementAssign(value)),
+								Expression.Break(label, result)),
+							label));
 				}
 
 				{
@@ -902,17 +885,14 @@ namespace GriffinPlus.Lib.Expressions
 					yield return Expression.Block(
 						new[] { result },
 						Expression.Assign(result, Expression.Constant(1)),
-							Expression.Loop(
-								Expression.IfThenElse(
-									Expression.GreaterThan(value, Expression.Constant(1)),
-									Expression.MultiplyAssign(
-										result,
-										Expression.PostDecrementAssign(value)),
-									Expression.Break(label, result)
-								),
-							label
-						)
-					);
+						Expression.Loop(
+							Expression.IfThenElse(
+								Expression.GreaterThan(value, Expression.Constant(1)),
+								Expression.MultiplyAssign(
+									result,
+									Expression.PostDecrementAssign(value)),
+								Expression.Break(label, result)),
+							label));
 				}
 
 				#endregion
@@ -922,41 +902,31 @@ namespace GriffinPlus.Lib.Expressions
 				yield return Expression.TryCatch(
 					Expression.Block(
 						Expression.Throw(Expression.New(typeof(Exception))),
-						Expression.Constant("try block")
-					),
+						Expression.Constant("try block")),
 					Expression.Catch(
 						typeof(Exception),
-						Expression.Constant("catch block")
-					)
-				);
+						Expression.Constant("catch block")));
 
 				yield return Expression.TryCatchFinally(
 					Expression.Block(
 						Expression.Throw(Expression.New(typeof(Exception))),
-						Expression.Constant("try block")
-					),
+						Expression.Constant("try block")),
 					Expression.Constant("try block"),
 					Expression.Catch(
 						typeof(Exception),
-						Expression.Constant("catch block")
-					)
-				);
+						Expression.Constant("catch block")));
 
 				yield return Expression.TryFinally(
 					Expression.Block(
 						Expression.Throw(Expression.New(typeof(Exception))),
-						Expression.Constant("try block")
-					),
-					Expression.Constant("finally block")
-				);
+						Expression.Constant("try block")),
+					Expression.Constant("finally block"));
 
 				yield return Expression.TryFault(
 					Expression.Block(
 						Expression.Throw(Expression.New(typeof(Exception))),
-						Expression.Constant("try block")
-					),
-					Expression.Constant("fault block")
-				);
+						Expression.Constant("try block")),
+					Expression.Constant("fault block"));
 
 				yield return Expression.Rethrow();
 
@@ -972,6 +942,7 @@ namespace GriffinPlus.Lib.Expressions
 							lambdaParameter,
 							lambdaParameter));
 				}
+
 				#endregion
 
 				#region DebugInfo
@@ -989,6 +960,6 @@ namespace GriffinPlus.Lib.Expressions
 		}
 
 		#endregion
-
 	}
+
 }

@@ -6,12 +6,14 @@
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// A test data record.
 	/// </summary>
-	internal class TestRecord
+	class TestRecord
 	{
 		public string Expression { get; set; }
-		public int HashCode { get; set; }
+		public int    HashCode   { get; set; }
 	}
+
 }

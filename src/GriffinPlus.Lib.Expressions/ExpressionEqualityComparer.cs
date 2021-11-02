@@ -10,6 +10,7 @@ using System.Linq.Expressions;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// An equality comparer for LINQ expression trees.
 	/// </summary>
@@ -18,9 +19,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <summary>
 		/// Gets the singleton instance of the comparer.
 		/// </summary>
-		public static ExpressionEqualityComparer Instance {
-			get;
-		} = new ExpressionEqualityComparer();
+		public static ExpressionEqualityComparer Instance { get; } = new ExpressionEqualityComparer();
 
 		/// <summary>
 		/// Determines whether the specified expressions are equal.
@@ -30,8 +29,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>true, if the specified expressions are equal; otherwise, false.</returns>
 		public bool Equals(Expression x, Expression y)
 		{
-			if (x == null && y == null) return true;      // both expressions are null => equal
-			if ((x != null) ^ (y != null)) return false;  // one expression is null => not equal
+			if (x == null && y == null) return true;     // both expressions are null => equal
+			if ((x != null) ^ (y != null)) return false; // one expression is null => not equal
 			return ExpressionEqualityComparison.AreEqual(x, y);
 		}
 
@@ -47,4 +46,5 @@ namespace GriffinPlus.Lib.Expressions
 			return ExpressionHashCodeCalculation.GetHashCode(expression);
 		}
 	}
+
 }

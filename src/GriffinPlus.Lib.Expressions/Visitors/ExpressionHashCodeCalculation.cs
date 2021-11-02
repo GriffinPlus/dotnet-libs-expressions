@@ -12,10 +12,11 @@ using System.Threading;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// An expression visitor that calculates the hash code of certain expression.
 	/// </summary>
-	internal sealed class ExpressionHashCodeCalculation : ExpressionVisitor
+	sealed class ExpressionHashCodeCalculation : ExpressionVisitor
 	{
 		/// <summary>
 		/// Instance cache, keeps only one instance per thread to reduce GC pressure.
@@ -30,14 +31,13 @@ namespace GriffinPlus.Lib.Expressions
 		// Parameters for the FNV-1a Hash
 		// (see http://www.isthe.com/chongo/tech/comp/fnv/)
 		private const int FnvHashOffset = unchecked((int)2166136261);
-		private const int FnvPrime = 16777619;
+		private const int FnvPrime      = 16777619;
 
 		/// <summary>
 		/// Initializes a new instance of the <see cref="ExpressionHashCodeCalculation"/> class.
 		/// </summary>
 		private ExpressionHashCodeCalculation()
 		{
-
 		}
 
 		/// <summary>
@@ -70,7 +70,8 @@ namespace GriffinPlus.Lib.Expressions
 			// query hash code cache
 			if (sInstance.Value.CacheHashCodes)
 			{
-				if (sHashCodeCache.TryGetValue(expression, out var cachedHashCode)) {
+				if (sHashCodeCache.TryGetValue(expression, out var cachedHashCode))
+				{
 					return cachedHashCode.Value;
 				}
 			}
@@ -80,14 +81,15 @@ namespace GriffinPlus.Lib.Expressions
 			instance.Visit(expression);
 
 			// update hash code cache
-			if (instance.CacheHashCodes) {
+			if (instance.CacheHashCodes)
+			{
 				sHashCodeCache.Add(expression, new StrongBox<int>(instance.HashCode));
 			}
 
 			return instance.HashCode;
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		public override Expression Visit(Expression expression)
 		{
 			if (expression == null) return null;
@@ -96,7 +98,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.Visit(expression);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitBinary(BinaryExpression node)
 		{
 			Hash(node.Method);
@@ -105,21 +107,21 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitBinary(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override CatchBlock VisitCatchBlock(CatchBlock node)
 		{
 			Hash(node.Test);
 			return base.VisitCatchBlock(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitConstant(ConstantExpression node)
 		{
 			Hash(node.Value);
 			return node;
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitDebugInfo(DebugInfoExpression node)
 		{
 			Hash(node.Document);
@@ -131,7 +133,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitDebugInfo(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitDynamic(DynamicExpression node)
 		{
 			Hash(node.Binder);
@@ -139,14 +141,14 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitDynamic(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override ElementInit VisitElementInit(ElementInit node)
 		{
 			Hash(node.AddMethod);
 			return base.VisitElementInit(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitGoto(GotoExpression node)
 		{
 			Hash((int)node.Kind);
@@ -154,21 +156,21 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitGoto(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitIndex(IndexExpression node)
 		{
 			Hash(node.Indexer);
 			return base.VisitIndex(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitLabel(LabelExpression node)
 		{
 			Hash(node.Target);
 			return base.VisitLabel(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override LabelTarget VisitLabelTarget(LabelTarget node)
 		{
 			if (node == null) return null;
@@ -176,7 +178,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitLabelTarget(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitLambda<T>(Expression<T> node)
 		{
 			Hash(node.Name);
@@ -185,7 +187,7 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitLambda(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitLoop(LoopExpression node)
 		{
 			Hash(node.BreakLabel);
@@ -193,35 +195,35 @@ namespace GriffinPlus.Lib.Expressions
 			return base.VisitLoop(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitMember(MemberExpression node)
 		{
 			Hash(node.Member);
 			return base.VisitMember(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override MemberBinding VisitMemberBinding(MemberBinding node)
 		{
 			Hash(node.BindingType);
 			return base.VisitMemberBinding(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitMethodCall(MethodCallExpression node)
 		{
 			Hash(node.Method);
 			return base.VisitMethodCall(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitNew(NewExpression node)
 		{
 			Hash(node.Constructor);
 			return base.VisitNew(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitParameter(ParameterExpression parameter)
 		{
 			Hash(parameter.Name);
@@ -229,21 +231,21 @@ namespace GriffinPlus.Lib.Expressions
 			return parameter;
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitSwitch(SwitchExpression node)
 		{
 			Hash(node.Comparison);
 			return base.VisitSwitch(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitTypeBinary(TypeBinaryExpression node)
 		{
 			Hash(node.TypeOperand);
 			return base.VisitTypeBinary(node);
 		}
 
-		/// <inheritdoc />
+		/// <inheritdoc/>
 		protected override Expression VisitUnary(UnaryExpression node)
 		{
 			Hash(node.Method);
@@ -287,7 +289,7 @@ namespace GriffinPlus.Lib.Expressions
 			unchecked
 			{
 				if (type != null) HashCode ^= type.GetHashCode();
-				else              HashCode ^= 532106345; // magic number
+				else HashCode ^= 532106345; // magic number
 				HashCode *= FnvPrime;
 			}
 		}
@@ -301,7 +303,7 @@ namespace GriffinPlus.Lib.Expressions
 			unchecked
 			{
 				if (constructor != null) HashCode ^= constructor.GetHashCode();
-				else                     HashCode ^= 10397522; // magic number
+				else HashCode ^= 10397522; // magic number
 				HashCode *= FnvPrime;
 			}
 		}
@@ -315,7 +317,7 @@ namespace GriffinPlus.Lib.Expressions
 			unchecked
 			{
 				if (method != null) HashCode ^= method.GetHashCode();
-				else                HashCode ^= 123864332; // magic number
+				else HashCode ^= 123864332; // magic number
 				HashCode *= FnvPrime;
 			}
 		}
@@ -329,7 +331,7 @@ namespace GriffinPlus.Lib.Expressions
 			unchecked
 			{
 				if (member != null) HashCode ^= member.GetHashCode();
-				else                HashCode ^= 75206420; // magic number
+				else HashCode ^= 75206420; // magic number
 				HashCode *= FnvPrime;
 			}
 		}
@@ -387,10 +389,10 @@ namespace GriffinPlus.Lib.Expressions
 			unchecked
 			{
 				if (value != null) HashCode ^= value.GetHashCode();
-				else               HashCode ^= 875231744; // magic number
+				else HashCode ^= 875231744; // magic number
 				HashCode *= FnvPrime;
 			}
 		}
-
 	}
+
 }

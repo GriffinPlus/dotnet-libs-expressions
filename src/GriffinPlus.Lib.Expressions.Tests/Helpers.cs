@@ -10,10 +10,11 @@ using System.IO;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// Helper methods for reading/writing test data sets.
 	/// </summary>
-	internal static class TestDataHelpers
+	static class TestDataHelpers
 	{
 		/// <summary>
 		/// Reads test records for the hash code calculation tests from the specified file.
@@ -32,11 +33,12 @@ namespace GriffinPlus.Lib.Expressions
 					string line = reader.ReadLine();
 					if (line == null) break;
 					string[] tokens = line.Split('\t');
-					records.Add(new TestRecord()
-					{
-						Expression = tokens[0],
-						HashCode = Convert.ToInt32(tokens[1])
-					});
+					records.Add(
+						new TestRecord
+						{
+							Expression = tokens[0],
+							HashCode = Convert.ToInt32(tokens[1])
+						});
 				}
 
 				return records;
@@ -60,6 +62,6 @@ namespace GriffinPlus.Lib.Expressions
 				}
 			}
 		}
-
 	}
+
 }

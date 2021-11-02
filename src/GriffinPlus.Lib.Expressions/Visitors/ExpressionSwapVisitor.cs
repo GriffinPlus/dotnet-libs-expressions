@@ -8,10 +8,11 @@ using System.Linq.Expressions;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// An expression visitor that replaces one expression node with another.
 	/// </summary>
-	internal class ExpressionSwapVisitor : ExpressionVisitor
+	class ExpressionSwapVisitor : ExpressionVisitor
 	{
 		private readonly Expression mSource;
 		private readonly Expression mReplacement;
@@ -40,4 +41,5 @@ namespace GriffinPlus.Lib.Expressions
 			return node == mSource ? mReplacement : base.Visit(node);
 		}
 	}
+
 }

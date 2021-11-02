@@ -4,9 +4,12 @@
 // The source code is licensed under the MIT license.
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
+using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Linq.Expressions;
+
 using Xunit;
 
 // ReSharper disable UnusedAutoPropertyAccessor.Local
@@ -14,8 +17,7 @@ using Xunit;
 
 namespace GriffinPlus.Lib.Expressions
 {
-	using System;
-	using System.Diagnostics;
+
 	// needed for EXPR<>() functions
 	using static LambdaExpressionInliners;
 
@@ -24,22 +26,22 @@ namespace GriffinPlus.Lib.Expressions
 	/// </summary>
 	public class LambdaExpressionComposeExtensionsTests
 	{
-		class A
+		private class A
 		{
 			public B B { get; set; }
 		}
 
-		class B
+		private class B
 		{
 			public C C { get; set; }
 		}
 
-		class C
+		private class C
 		{
 			public D D { get; set; }
 		}
 
-		class D
+		private class D
 		{
 			public int Value { get; set; }
 		}
@@ -71,56 +73,61 @@ namespace GriffinPlus.Lib.Expressions
 			{
 				// (A x, ...) => x
 				// (A x)      => x.B.C.D
-				foreach (var expr in GenerateVariations(EXPR<A,A>(x => x)))
+				foreach (var expr in GenerateVariations(EXPR<A, A>(x => x)))
 				{
-					yield return new object[] {
+					yield return new object[]
+					{
 						expr,
-						EXPR<A,D>(x => x.B.C.D),
-						GenerateVariation(EXPR<A,D>(x => x.B.C.D), expr)
+						EXPR<A, D>(x => x.B.C.D),
+						GenerateVariation(EXPR<A, D>(x => x.B.C.D), expr)
 					};
 				}
 
 				// (A x, ...) => x.B
 				// (B x)      => x.C.D
-				foreach (var expr in GenerateVariations(EXPR<A,B>(x => x.B)))
+				foreach (var expr in GenerateVariations(EXPR<A, B>(x => x.B)))
 				{
-					yield return new object[] {
+					yield return new object[]
+					{
 						expr,
-						EXPR<B,D>(x => x.C.D),
-						GenerateVariation(EXPR<A,D>(x => x.B.C.D), expr)
+						EXPR<B, D>(x => x.C.D),
+						GenerateVariation(EXPR<A, D>(x => x.B.C.D), expr)
 					};
 				}
 
 				// (A x, ...) => x.B.C
 				// (C x)      => x.D
-				foreach (var expr in GenerateVariations(EXPR<A,C>(x => x.B.C)))
+				foreach (var expr in GenerateVariations(EXPR<A, C>(x => x.B.C)))
 				{
-					yield return new object[] {
+					yield return new object[]
+					{
 						expr,
-						EXPR<C,D>(x => x.D),
-						GenerateVariation(EXPR<A,D>(x => x.B.C.D), expr)
+						EXPR<C, D>(x => x.D),
+						GenerateVariation(EXPR<A, D>(x => x.B.C.D), expr)
 					};
 				}
 
 				// (A x, ...) => x.B.C.D
 				// (D x)      => x
-				foreach (var expr in GenerateVariations(EXPR<A,D>(x => x.B.C.D)))
+				foreach (var expr in GenerateVariations(EXPR<A, D>(x => x.B.C.D)))
 				{
-					yield return new object[] {
+					yield return new object[]
+					{
 						expr,
-						EXPR<D,D>(x => x),
-						GenerateVariation(EXPR<A,D>(x => x.B.C.D), expr)
+						EXPR<D, D>(x => x),
+						GenerateVariation(EXPR<A, D>(x => x.B.C.D), expr)
 					};
 				}
 
 				// (A x, ...) => x.B.C.D
 				// (D x)      => x
-				foreach (var expr in GenerateVariations(EXPR<A,B>(x => x.B)))
+				foreach (var expr in GenerateVariations(EXPR<A, B>(x => x.B)))
 				{
-					yield return new object[] {
+					yield return new object[]
+					{
 						expr,
-						EXPR<B,int>(x => x.C.D.Value),
-						GenerateVariation(EXPR<A,int>(x => x.B.C.D.Value), expr)
+						EXPR<B, int>(x => x.C.D.Value),
+						GenerateVariation(EXPR<A, int>(x => x.B.C.D.Value), expr)
 					};
 				}
 			}
@@ -159,6 +166,6 @@ namespace GriffinPlus.Lib.Expressions
 		{
 			return Expression.Lambda(expression.Body, other.Parameters);
 		}
-
 	}
+
 }

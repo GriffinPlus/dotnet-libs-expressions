@@ -9,6 +9,7 @@ using System.Linq.Expressions;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// Extension methods for composing strongly typed lambda expressions.
 	/// </summary>
@@ -24,7 +25,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>A lambda expression representing the composition of the specified lambda expressions.</returns>
 		public static Expression<Func<TOut>>
 			Compose<TInterstitial, TOut>(
-				this Expression<Func<TInterstitial>> inner,
+				this Expression<Func<TInterstitial>>  inner,
 				Expression<Func<TInterstitial, TOut>> outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
@@ -45,7 +46,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn, TOut>>
 			Compose<TIn, TInterstitial, TOut>(
 				this Expression<Func<TIn, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>     outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -66,7 +67,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TOut>>
 			Compose<TIn1, TIn2, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>            outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -88,7 +89,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TOut>>
 			Compose<TIn1, TIn2, TIn3, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                  outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -111,7 +112,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                        outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -135,7 +136,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                              outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -160,7 +161,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                    outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -186,7 +187,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                          outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -213,7 +214,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -241,7 +242,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                      outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -270,7 +271,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                             outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -300,7 +301,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                                    outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -331,7 +332,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                                           outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -363,7 +364,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                                                  outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -396,7 +397,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                                                         outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -430,7 +431,7 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                                                                outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
@@ -465,13 +466,13 @@ namespace GriffinPlus.Lib.Expressions
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TOut>>
 			Compose<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TInterstitial, TOut>(
 				this Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TInterstitial>> inner,
-				Expression<Func<TInterstitial, TOut>> outer)
+				Expression<Func<TInterstitial, TOut>>                                                                                                       outer)
 		{
 			if (inner == null) throw new ArgumentNullException(nameof(inner));
 			if (outer == null) throw new ArgumentNullException(nameof(outer));
 			var visitor = new ExpressionSwapVisitor(outer.Parameters[0], inner.Body);
 			return Expression.Lambda<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TOut>>(visitor.Visit(outer.Body), inner.Parameters);
 		}
-
 	}
+
 }

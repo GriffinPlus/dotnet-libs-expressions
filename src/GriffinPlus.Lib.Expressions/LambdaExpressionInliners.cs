@@ -12,6 +12,7 @@ using System.Runtime.CompilerServices;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	/// <summary>
 	/// A collection of static methods that allow inlining of strongly-typed lambda expressions by simply
 	/// returning a lambda expression as is. There is no need to assign the lambda expression to a variable.
@@ -27,8 +28,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action>
-			EXPR
-			(Expression<Action> expr)
+			EXPR(Expression<Action> expr)
 		{
 			return expr;
 		}
@@ -41,8 +41,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn>>
-			EXPR<TIn>
-			(Expression<Action<TIn>> expr)
+			EXPR<TIn>(Expression<Action<TIn>> expr)
 		{
 			return expr;
 		}
@@ -56,8 +55,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2>>
-			EXPR<TIn1, TIn2>
-			(Expression<Action<TIn1, TIn2>> expr)
+			EXPR<TIn1, TIn2>(Expression<Action<TIn1, TIn2>> expr)
 		{
 			return expr;
 		}
@@ -72,8 +70,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3>>
-			EXPR<TIn1, TIn2, TIn3>
-			(Expression<Action<TIn1, TIn2, TIn3>> expr)
+			EXPR<TIn1, TIn2, TIn3>(Expression<Action<TIn1, TIn2, TIn3>> expr)
 		{
 			return expr;
 		}
@@ -89,8 +86,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4>>
-			EXPR<TIn1, TIn2, TIn3, TIn4>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4>> expr)
 		{
 			return expr;
 		}
@@ -107,8 +104,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5>> expr)
 		{
 			return expr;
 		}
@@ -126,8 +123,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6>> expr)
 		{
 			return expr;
 		}
@@ -146,8 +143,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7>> expr)
 		{
 			return expr;
 		}
@@ -167,8 +164,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8>> expr)
 		{
 			return expr;
 		}
@@ -189,8 +186,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9>> expr)
 		{
 			return expr;
 		}
@@ -212,8 +209,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10>> expr)
 		{
 			return expr;
 		}
@@ -236,8 +233,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11>> expr)
 		{
 			return expr;
 		}
@@ -261,8 +258,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12>> expr)
 		{
 			return expr;
 		}
@@ -287,8 +284,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13>> expr)
 		{
 			return expr;
 		}
@@ -314,8 +311,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14>> expr)
 		{
 			return expr;
 		}
@@ -342,8 +339,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15>> expr)
 		{
 			return expr;
 		}
@@ -371,8 +368,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16>
-			(Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16>(
+				Expression<Action<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16>> expr)
 		{
 			return expr;
 		}
@@ -389,8 +386,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TOut>>
-			EXPR<TOut>
-			(Expression<Func<TOut>> expr)
+			EXPR<TOut>(Expression<Func<TOut>> expr)
 		{
 			return expr;
 		}
@@ -403,9 +399,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <param name="expr">Lambda expression.</param>
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
-		public static Expression<Func<TIn,TOut>>
-			EXPR<TIn,TOut>
-			(Expression<Func<TIn,TOut>> expr)
+		public static Expression<Func<TIn, TOut>>
+			EXPR<TIn, TOut>(Expression<Func<TIn, TOut>> expr)
 		{
 			return expr;
 		}
@@ -420,8 +415,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TOut>>
-			EXPR<TIn1, TIn2, TOut>
-			(Expression<Func<TIn1, TIn2, TOut>> expr)
+			EXPR<TIn1, TIn2, TOut>(Expression<Func<TIn1, TIn2, TOut>> expr)
 		{
 			return expr;
 		}
@@ -437,8 +431,7 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TOut>(Expression<Func<TIn1, TIn2, TIn3, TOut>> expr)
 		{
 			return expr;
 		}
@@ -455,8 +448,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TOut>> expr)
 		{
 			return expr;
 		}
@@ -474,8 +467,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TOut>> expr)
 		{
 			return expr;
 		}
@@ -494,8 +487,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TOut>> expr)
 		{
 			return expr;
 		}
@@ -515,8 +508,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TOut>> expr)
 		{
 			return expr;
 		}
@@ -537,8 +530,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TOut>> expr)
 		{
 			return expr;
 		}
@@ -560,8 +553,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TOut>> expr)
 		{
 			return expr;
 		}
@@ -584,8 +577,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TOut>> expr)
 		{
 			return expr;
 		}
@@ -609,8 +602,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TOut>> expr)
 		{
 			return expr;
 		}
@@ -635,8 +628,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TOut>> expr)
 		{
 			return expr;
 		}
@@ -662,8 +655,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TOut>> expr)
 		{
 			return expr;
 		}
@@ -690,8 +683,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TOut>> expr)
 		{
 			return expr;
 		}
@@ -719,8 +712,8 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TOut>> expr)
 		{
 			return expr;
 		}
@@ -749,13 +742,13 @@ namespace GriffinPlus.Lib.Expressions
 		/// <returns>The specified lambda expression.</returns>
 		[MethodImpl(MethodImplOptions.AggressiveInlining)]
 		public static Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TOut>>
-			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TOut>
-			(Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TOut>> expr)
+			EXPR<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TOut>(
+				Expression<Func<TIn1, TIn2, TIn3, TIn4, TIn5, TIn6, TIn7, TIn8, TIn9, TIn10, TIn11, TIn12, TIn13, TIn14, TIn15, TIn16, TOut>> expr)
 		{
 			return expr;
 		}
 
 		#endregion
-
 	}
+
 }

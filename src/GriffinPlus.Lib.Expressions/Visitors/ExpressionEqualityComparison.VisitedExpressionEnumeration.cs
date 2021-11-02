@@ -11,6 +11,7 @@ using System.Threading;
 
 namespace GriffinPlus.Lib.Expressions
 {
+
 	partial class ExpressionEqualityComparison
 	{
 		/// <summary>
@@ -18,15 +19,15 @@ namespace GriffinPlus.Lib.Expressions
 		/// </summary>
 		internal sealed class VisitedExpressionEnumeration : ExpressionVisitor
 		{
-			private static readonly ThreadLocal<VisitedExpressionEnumeration> sInstance = new ThreadLocal<VisitedExpressionEnumeration>(() => new VisitedExpressionEnumeration());
-			private Queue<object> mVisitedNodes = new Queue<object>();
+			// ReSharper disable once MemberHidesStaticFromOuterClass
+			private static readonly ThreadLocal<VisitedExpressionEnumeration> sInstance     = new ThreadLocal<VisitedExpressionEnumeration>(() => new VisitedExpressionEnumeration());
+			private                 Queue<object>                             mVisitedNodes = new Queue<object>();
 
 			/// <summary>
 			/// Initializes a new instance of the <see cref="VisitedExpressionEnumeration"/> class.
 			/// </summary>
 			private VisitedExpressionEnumeration()
 			{
-
 			}
 
 			/// <summary>
@@ -44,7 +45,7 @@ namespace GriffinPlus.Lib.Expressions
 				return sInstance.Value.mVisitedNodes;
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			public override Expression Visit(Expression expression)
 			{
 				if (expression == null) return null;
@@ -52,49 +53,49 @@ namespace GriffinPlus.Lib.Expressions
 				return base.Visit(expression);
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			protected override CatchBlock VisitCatchBlock(CatchBlock node)
 			{
 				mVisitedNodes.Enqueue(node);
 				return base.VisitCatchBlock(node);
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			protected override ElementInit VisitElementInit(ElementInit node)
 			{
 				mVisitedNodes.Enqueue(node);
 				return base.VisitElementInit(node);
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			protected override LabelTarget VisitLabelTarget(LabelTarget node)
 			{
 				mVisitedNodes.Enqueue(node);
 				return base.VisitLabelTarget(node);
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			protected override MemberAssignment VisitMemberAssignment(MemberAssignment node)
 			{
 				mVisitedNodes.Enqueue(node);
 				return base.VisitMemberAssignment(node);
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			protected override MemberBinding VisitMemberBinding(MemberBinding node)
 			{
 				mVisitedNodes.Enqueue(node);
 				return base.VisitMemberBinding(node);
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			protected override MemberListBinding VisitMemberListBinding(MemberListBinding node)
 			{
 				mVisitedNodes.Enqueue(node);
 				return base.VisitMemberListBinding(node);
 			}
 
-			/// <inheritdoc />
+			/// <inheritdoc/>
 			protected override MemberMemberBinding VisitMemberMemberBinding(MemberMemberBinding node)
 			{
 				mVisitedNodes.Enqueue(node);
@@ -102,4 +103,5 @@ namespace GriffinPlus.Lib.Expressions
 			}
 		}
 	}
+
 }
