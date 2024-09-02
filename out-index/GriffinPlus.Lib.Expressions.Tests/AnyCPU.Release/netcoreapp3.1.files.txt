@@ -1,4 +1,5 @@
-﻿.\GriffinPlus.Lib.Expressions.dll
+﻿.msCoverageSourceRootsMapping_GriffinPlus.Lib.Expressions.Tests
+.\GriffinPlus.Lib.Expressions.dll
 .\GriffinPlus.Lib.Expressions.pdb
 .\GriffinPlus.Lib.Expressions.Tests.deps.json
 .\GriffinPlus.Lib.Expressions.Tests.dll
@@ -15,7 +16,6 @@
 .\Microsoft.VisualStudio.TestPlatform.Common.dll
 .\Microsoft.VisualStudio.TestPlatform.ObjectModel.dll
 .\Newtonsoft.Json.dll
-.\NuGet.Frameworks.dll
 .\testhost.dll
 .\testhost.exe
 .\xunit.abstractions.dll

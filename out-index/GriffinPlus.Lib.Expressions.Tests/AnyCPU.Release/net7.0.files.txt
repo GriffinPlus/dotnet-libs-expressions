@@ -4,7 +4,6 @@
 .\GriffinPlus.Lib.Expressions.Tests.deps.json
 .\GriffinPlus.Lib.Expressions.Tests.dll
 .\GriffinPlus.Lib.Expressions.Tests.pdb
-.\GriffinPlus.Lib.Expressions.Tests.runtimeconfig.dev.json
 .\GriffinPlus.Lib.Expressions.Tests.runtimeconfig.json
 .\GriffinPlus.Lib.Expressions.xml
 .\Microsoft.TestPlatform.CommunicationUtilities.dll
@@ -24,7 +23,7 @@
 .\xunit.execution.dotnet.dll
 .\xunit.runner.reporters.netcoreapp10.dll
 .\xunit.runner.utility.netcoreapp10.dll
-.\xunit.runner.visualstudio.dotnetcore.testadapter.dll
+.\xunit.runner.visualstudio.testadapter.dll
 .\cs\Microsoft.TestPlatform.CommunicationUtilities.resources.dll
 .\cs\Microsoft.TestPlatform.CoreUtilities.resources.dll
 .\cs\Microsoft.TestPlatform.CrossPlatEngine.resources.dll
